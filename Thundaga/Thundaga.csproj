@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\Downloads\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly">
       <HintPath>$(NeosPath)Neos_Data/Managed/Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -20,6 +23,9 @@
     </Reference>
     <Reference Include="BaseX">
       <HintPath>$(NeosPath)Neos_Data/Managed/BaseX.dll</HintPath>
+    </Reference>
+    <Reference Include="NeosModLoader">
+      <HintPath>..\..\..\..\Downloads\NeosModLoader.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(NeosPath)Neos_Data/Managed/UnityEngine.dll</HintPath>
@@ -42,16 +48,8 @@
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>$(NeosPath)Neos_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
-    <Reference Include="NeosModLoader">
-      <HintPath>$(NeosPath)NeosModLoader.dll</HintPath>
-      <HintPath Condition="Exists('$(NeosPath)Libraries/NeosModLoader.dll')">$(NeosPath)Libraries/NeosModLoader.dll</HintPath>
-    </Reference>
     <Reference Include="FrooxEngine">
       <HintPath>$(NeosPath)Neos_Data/Managed/FrooxEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="HarmonyLib">
-      <HintPath>$(NeosPath)0Harmony.dll</HintPath>
-      <HintPath Condition="Exists('$(NeosPath)nml_libs/0Harmony.dll')">$(NeosPath)nml_libs/0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="NativeGraphics">
       <HintPath>$(NeosPath)Neos_Data/Managed/NativeGraphics.NET.dll</HintPath>

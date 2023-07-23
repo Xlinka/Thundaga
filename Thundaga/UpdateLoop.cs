@@ -60,15 +60,32 @@ namespace Thundaga
 
         private static void RefreshAllConnectors()
         {
-            CheckForNullConnectors();
-            var count = Engine.Current.WorldManager.Worlds.Sum(RefreshConnectorsForWorld);
-            UniLog.Log($"Refreshed {count} components");
-            //prevent updating removed connectors
-            PacketManager.IntermittentPacketQueue.Clear();
-            PacketManager.NeosPacketQueue.Clear();
+            try
+            {
+                CheckForNullConnectors();
+                var count = Engine.Current.WorldManager.Worlds.Sum(RefreshConnectorsForWorld);
+                UniLog.Log($"Refreshed {count} components");
+                //prevent updating removed connectors
+                PacketManager.IntermittentPacketQueue.Clear();
+                PacketManager.NeosPacketQueue.Clear();
+            }
+            catch (Exception e)
+            {
+                UniLog.Error("Error while refreshing connectors: " + e.ToString());
+            }
         }
-        private static void RefreshAllLocalConnectors() =>
-            Engine.Current.WorldManager.Worlds.Sum(RefreshLocalConnectorsForWorld);
+        private static void RefreshAllLocalConnectors()
+        {
+            try
+            {
+                Engine.Current.WorldManager.Worlds.Sum(RefreshLocalConnectorsForWorld);
+            }
+            catch (Exception e)
+            {
+                UniLog.Error("Error while refreshing local connectors: " + e.ToString());
+            }
+        }
+
 
         private static int RefreshConnectorsForWorld(World world) => RefreshConnectorsForWorld(world, false);
         private static int RefreshLocalConnectorsForWorld(World world) => RefreshConnectorsForWorld(world, true);
@@ -140,7 +157,7 @@ namespace Thundaga
                 }
                 catch (Exception e)
                 {
-                    UniLog.Log(e);
+                    UniLog.Error("Error while checking for null connectors: " + e.ToString());
                 }
             }
             foreach (var remove in toRemove) Connectors.Remove(remove);
@@ -167,7 +184,7 @@ namespace Thundaga
             }
             catch (Exception e)
             {
-                UniLog.Log(e);
+                UniLog.Error("Error while refreshing connector: " + e.ToString());
             }
         }
 
